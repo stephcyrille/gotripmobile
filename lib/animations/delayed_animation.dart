@@ -26,9 +26,10 @@ class _DelayedAnimationState extends State<DelayedAnimation>
     final curve =
         CurvedAnimation(curve: Curves.decelerate, parent: _controller);
     _animOffset =
-        Tween<Offset>(begin: const Offset(0.0, 0.35), end: Offset.zero)
+        Tween<Offset>(begin: const Offset(0.0, -0.35), end: Offset.zero)
             .animate(curve);
 
+    // ignore: unnecessary_null_comparison
     if (widget.delay == null) {
       _controller.forward();
     } else {

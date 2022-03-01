@@ -19,8 +19,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  intro_views_flutter: ^3.2.0
-  avatar_glow:
+  # intro_views_flutter: ^3.2.0
+  avatar_glow: ^2.0.2
+  flutter_svg: ^1.0.3
+  provider: ^6.0.2
 
 dev_dependencies:
   flutter_test:
@@ -40,12 +42,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/logo_min.png
-    - assets/home_pic.png
-    - assets/icon.png
-    - assets/images/one.png
-    - assets/images/two.png
-    - assets/images/three.png
+    - assets/
+    - assets/icons/
+    - assets/images/
   fonts:
     - family: Rubik
       fonts:

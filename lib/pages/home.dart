@@ -1,7 +1,12 @@
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:flace/animations/BouncyPageRoute.dart';
+import 'package:flace/flace_styles.dart';
+import 'package:flace/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flace/animations/delayed_animation.dart';
 import 'package:flace/colors.dart';
+import 'auth/registration.dart';
+import 'auth/login.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -43,22 +48,24 @@ class _HomePageState extends State<HomePage>
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           children: <Widget>[
             const SizedBox(height: 50.0),
-            AvatarGlow(
-              endRadius: 90,
-              duration: const Duration(seconds: 2),
-              glowColor: Colors.white24,
-              repeat: true,
-              repeatPauseDuration: const Duration(seconds: 2),
-              startDelay: const Duration(seconds: 1),
-              child: Material(
-                  elevation: 8.0,
-                  shape: const CircleBorder(),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.grey[100],
-                    child: Image.asset('assets/icon.png'),
-                    radius: 50.0,
-                  )),
-            ),
+            DelayedAnimation(
+                child: AvatarGlow(
+                  endRadius: 90,
+                  duration: const Duration(seconds: 4),
+                  glowColor: Colors.yellow,
+                  repeat: true,
+                  repeatPauseDuration: const Duration(seconds: 2),
+                  startDelay: const Duration(seconds: 1),
+                  child: Material(
+                      elevation: 8.0,
+                      shape: const CircleBorder(),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey[100],
+                        child: Image.asset('assets/icon.png'),
+                        radius: 50.0,
+                      )),
+                ),
+                delay: delayedAmount + 1500),
             DelayedAnimation(
               child: const Text(
                 "Bienvenue dans FLACE",
@@ -89,6 +96,10 @@ class _HomePageState extends State<HomePage>
             ),
             DelayedAnimation(
               child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context, BouncyPageRoute(widget: const SignUpPage()));
+                },
                 onTapDown: _onTapDown,
                 onTapUp: _onTapUp,
                 child: Transform.scale(
@@ -99,25 +110,20 @@ class _HomePageState extends State<HomePage>
               delay: delayedAmount + 4000,
             ),
             const SizedBox(
-              height: 15.0,
+              height: 20.0,
             ),
-            DelayedAnimation(
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, '/login');
-                },
-                child: Text(
-                  "J'ai déja un compte".toUpperCase(),
-                  style: const TextStyle(
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
-                    color: color,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              delay: delayedAmount + 5000,
-            ),
+            // DelayedAnimation(
+            //   child: SingnInButton(
+            //     onTap: () {
+            //       Navigator.push(
+            //           context, BouncyPageRoute(widget: const SigninPage()));
+            //     },
+            //     text: 'J\'ai deja un compte',
+            //     boxColor: Colors.yellow,
+            //     boxStyle: KTextStyle.authButtonTextStyle,
+            //   ),
+            //   delay: delayedAmount + 5000,
+            // ),
           ],
         ),
       ),
@@ -127,6 +133,7 @@ class _HomePageState extends State<HomePage>
   Widget get _animatedButtonUI => Container(
         height: 60,
         width: 270,
+        // margin: const EdgeInsets.only(left: 20, right: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100.0),
           color: Colors.white,

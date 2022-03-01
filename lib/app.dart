@@ -1,8 +1,8 @@
+import 'package:flace/screens/spash/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'colors.dart';
-import 'pages/home.dart';
-import 'pages/auth/login.dart';
-import 'widgets/cut_corners_border.dart';
+import 'package:flace/screens/auth/signin/signin.dart';
+import 'package:flace/routes.dart';
+import 'package:flace/theme.dart';
 
 class FlaceApp extends StatefulWidget {
   const FlaceApp({Key? key}) : super(key: key);
@@ -17,15 +17,15 @@ class _FlaceAppState extends State<FlaceApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flace',
-      home: const HomePage(),
-      initialRoute: '/login',
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
       onGenerateRoute: _getRoute,
-      theme: _kFlaceTheme,
+      theme: theme(),
     );
   }
 
   Route<dynamic>? _getRoute(RouteSettings settings) {
-    if (settings.name != '/login') {
+    if (settings.name != '/signin') {
       return null;
     }
 
@@ -35,56 +35,4 @@ class _FlaceAppState extends State<FlaceApp> {
       fullscreenDialog: true,
     );
   }
-}
-
-final ThemeData _kFlaceTheme = _buildFlaceTheme();
-
-ThemeData _buildFlaceTheme() {
-  final ThemeData base = ThemeData.light();
-  return base.copyWith(
-      colorScheme: base.colorScheme.copyWith(
-          primary: kFlaceGreen100,
-          onPrimary: kFlaceDark900,
-          secondary: kFlaceDark900,
-          error: kFlaceErrorRed),
-      textTheme: _buildFlaceTextTheme(base.textTheme),
-      textSelectionTheme: const TextSelectionThemeData(
-        selectionColor: kFlaceGreen100,
-      ),
-      inputDecorationTheme: const InputDecorationTheme(
-        focusColor: kFlaceGreen500,
-      )
-      // inputDecorationTheme: const InputDecorationTheme(
-      //     focusedBorder: CutCornersBorder(
-      //         borderSide: BorderSide(
-      //       width: 2.0,
-      //       color: kFlaceDark900,
-      //     )),
-      //     border: CutCornersBorder())
-      );
-}
-
-TextTheme _buildFlaceTextTheme(TextTheme base) {
-  return base
-      .copyWith(
-        headline5: base.headline5!.copyWith(
-          fontWeight: FontWeight.w500,
-        ),
-        headline6: base.headline6!.copyWith(
-          fontSize: 18.0,
-        ),
-        caption: base.caption!.copyWith(
-          fontWeight: FontWeight.w400,
-          fontSize: 14.0,
-        ),
-        bodyText1: base.bodyText1!.copyWith(
-          fontWeight: FontWeight.w300,
-          fontSize: 16.0,
-        ),
-      )
-      .apply(
-        fontFamily: 'Rubik',
-        displayColor: kFlaceDark900,
-        bodyColor: kFlaceDark900,
-      );
 }

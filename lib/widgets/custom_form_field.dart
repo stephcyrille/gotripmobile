@@ -43,7 +43,7 @@ class CustomFormField extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(left: 20, right: 20),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            padding: const EdgeInsets.symmetric(horizontal: 0.0),
             child: TextField(
               maxLines: maxLines,
               controller: controller,

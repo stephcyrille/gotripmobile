@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AuthButton extends StatelessWidget {
+class DefaultButton extends StatelessWidget {
   final String text;
   final Function() onTap;
   final Color boxColor;
   final TextStyle boxStyle;
 
-  const AuthButton(
+  const DefaultButton(
       {Key? key,
       required this.onTap,
       required this.boxColor,
@@ -16,73 +16,18 @@ class AuthButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * 0.05,
-        margin: const EdgeInsets.only(left: 20, right: 20),
-        decoration: BoxDecoration(
-            color: boxColor,
-            borderRadius: const BorderRadius.all(Radius.circular(10))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text(
-                text,
-                style: boxStyle,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class AuthCustomButton extends StatelessWidget {
-  final String text;
-  final Function() onTap;
-  final Color boxColor;
-  final TextStyle boxStyle;
-  final IconData boxIcon;
-
-  const AuthCustomButton(
-      {Key? key,
-      required this.onTap,
-      required this.boxColor,
-      required this.boxStyle,
-      required this.boxIcon,
-      required this.text})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * 0.05,
-        margin: const EdgeInsets.only(left: 20, right: 20),
-        decoration: BoxDecoration(
-            color: boxColor,
-            borderRadius: const BorderRadius.all(Radius.circular(10))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(boxIcon, color: Colors.white),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text(
-                text,
-                style: boxStyle,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    return SizedBox(
+        width: double.infinity,
+        height: 60,
+        child: FlatButton(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0)),
+          color: boxColor,
+          onPressed: onTap,
+          child: Text(
+            text,
+            style: boxStyle,
+          ),
+        ));
   }
 }

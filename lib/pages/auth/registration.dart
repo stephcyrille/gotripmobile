@@ -4,15 +4,17 @@ import 'package:flace/pages/home.dart';
 import 'package:flace/colors.dart';
 import 'package:flace/widgets/custom_header_auth.dart';
 import 'package:flace/widgets/custom_form_field.dart';
+import 'package:flace/widgets/custom_rich_text.dart';
+import 'package:flace/widgets/custom_button.dart';
 
-class SigninPage extends StatefulWidget {
-  const SigninPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  State<SigninPage> createState() => _SigninPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SigninPageState extends State<SigninPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final _usenameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _usernameFocusNode = FocusNode();
@@ -67,27 +69,6 @@ class _SigninPageState extends State<SigninPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 40),
-                  Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.09),
-                    child: const Material(
-                        elevation: 0.0,
-                        shape: CircleBorder(),
-                        child: CircleAvatar(
-                          backgroundColor: kFlaceBackgroundWhite,
-                          child: Icon(
-                            Icons.account_circle_rounded,
-                            color: kFlaceGreen300,
-                            size: 100,
-                          ),
-                          radius: 50.0,
-                        )),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
                   CustomFormField(
                     headingText: "Nom d'utilisateur",
                     hintText: "Nom d'utilisateur",
@@ -112,27 +93,10 @@ class _SigninPageState extends State<SigninPage> {
                         icon: const Icon(Icons.visibility), onPressed: () {}),
                     controller: _passwordController,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 24),
-                        child: InkWell(
-                          onTap: () {},
-                          child: Text(
-                            "Mot de passe oublié?",
-                            style: TextStyle(
-                                color: kFlaceGreen300.withOpacity(0.7),
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  const SizedBox(height: 20.0),
                   // AuthButton(
                   //   onTap: () {},
-                  //   text: 'SE CONNECTER',
+                  //   text: 'S\'INSCRIRE',
                   //   boxColor: kFlaceGreen400,
                   //   boxStyle: KTextStyle.authButtonTextStyle,
                   // ),
@@ -145,14 +109,14 @@ class _SigninPageState extends State<SigninPage> {
                   // const SizedBox(height: 10),
                   // AuthCustomButton(
                   //     onTap: () {},
-                  //     text: 'Se connecter avec google',
+                  //     text: 'S\'inscrire avec google',
                   //     boxColor: Colors.red,
                   //     boxStyle: KTextStyle.authGoogleButtonTextStyle,
                   //     boxIcon: Icons.apple_outlined),
                   // const SizedBox(height: 20),
                   // AuthCustomButton(
                   //   onTap: () {},
-                  //   text: 'Se connecter avec Facebook',
+                  //   text: 'S\'inscrire avec Facebook',
                   //   boxColor: Colors.blue,
                   //   boxStyle: KTextStyle.authFacebookButtonTextStyle,
                   //   boxIcon: Icons.facebook_outlined,
