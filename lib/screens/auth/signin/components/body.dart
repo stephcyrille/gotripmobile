@@ -1,7 +1,11 @@
 import 'package:flace/colors.dart';
+import 'package:flace/components/default_button.dart';
+import 'package:flace/components/form_error.dart';
+import 'package:flace/form_error_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flace/components/custom_surfix.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -39,37 +43,35 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
+  final _formKey = GlobalKey<FormState>();
+  late String email;
+  late String password;
+  final List<String> errors = [];
+
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         children: [
           buildEmailFormField(),
           const SizedBox(height: 20.0),
           buildPasswordFormField(),
           const SizedBox(height: 20.0),
-          defaultButton(),
-        ],
-      ),
-    );
-  }
-
-  SizedBox defaultButton() {
-    return SizedBox(
-      width: double.infinity,
-      height: 58.0,
-      child: FlatButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-        onPressed: () {},
-        child: const Text(
-          'Se connecter',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18.0,
-            color: Colors.white,
+          FormError(errors: errors),
+          const SizedBox(height: 20.0),
+          Row(
+            children: [Checkbox(value: false, onChanged: (value) {})],
           ),
-        ),
-        color: kFlaceGreen400,
+          DefaultButton(
+            text: 'Se connecter',
+            press: () {
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+              }
+            },
+          ),
+        ],
       ),
     );
   }
@@ -77,6 +79,34 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
+      onChanged: (value) {
+        if ((value == null || value.isNotEmpty) &&
+            errors.contains(kPassNullError)) {
+          setState(() {
+            errors.remove(kPassNullError);
+          });
+        } else if (value.length >= 8 && errors.contains(kShortPassError)) {
+          setState(() {
+            errors.remove(kShortPassError);
+          });
+        }
+        return;
+      },
+      validator: (value) {
+        if ((value == null || value.isEmpty) &&
+            !errors.contains(kPassNullError)) {
+          setState(() {
+            errors.add(kPassNullError);
+          });
+        } else if ((value == null || value.length < 8) &&
+            !errors.contains(kShortPassError)) {
+          setState(() {
+            errors.add(kShortPassError);
+          });
+        }
+        return null;
+      },
+      style: const TextStyle(color: kFlaceDark900),
       decoration: const InputDecoration(
         hintText: 'Saissisez votre mot de passe',
         labelText: 'Mot de passe',
@@ -88,6 +118,35 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
+      onSaved: (newValue) => email = newValue!,
+      onChanged: (value) {
+        if (value.isNotEmpty && errors.contains(kEmailNullError)) {
+          setState(() {
+            errors.remove(kEmailNullError);
+          });
+        } else if (emailValidatorRegExp.hasMatch(value) &&
+            errors.contains(kInvalidEmailError)) {
+          setState(() {
+            errors.remove(kInvalidEmailError);
+          });
+        }
+        return;
+      },
+      validator: (value) {
+        if ((value == null || value.isEmpty) &&
+            !errors.contains(kEmailNullError)) {
+          setState(() {
+            errors.add(kEmailNullError);
+          });
+        } else if (!emailValidatorRegExp.hasMatch(value!) &&
+            !errors.contains(kInvalidEmailError)) {
+          setState(() {
+            errors.add(kInvalidEmailError);
+          });
+        }
+        return null;
+      },
+      style: const TextStyle(color: kFlaceDark900),
       decoration: const InputDecoration(
         hintText: 'Saissisez votre email',
         labelText: 'Email',
