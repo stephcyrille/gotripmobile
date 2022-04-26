@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flace/colors.dart';
+import 'package:gotripmobile/colors.dart';
 
 class CustomHeader extends StatelessWidget {
   final String text;
@@ -19,7 +19,7 @@ class CustomHeader extends StatelessWidget {
             onTap: onTap,
             child: const Icon(
               Icons.arrow_back_ios_new_rounded,
-              color: kFlaceBackgroundWhite,
+              color: kGotripBackgroundWhite,
               size: 24,
             ),
           ),
@@ -29,7 +29,7 @@ class CustomHeader extends StatelessWidget {
           Text(
             text,
             style: const TextStyle(
-                color: kFlaceSurfaceWhite,
+                color: kGotripSurfaceWhite,
                 fontSize: 20.0,
                 fontWeight: FontWeight.w400),
             // style: KTextStyle.headerTextStyle,

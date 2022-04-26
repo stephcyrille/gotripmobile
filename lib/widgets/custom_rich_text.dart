@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flace/colors.dart';
+import 'package:gotripmobile/colors.dart';
 
 class CustomRichText extends StatelessWidget {
   final String discription;
@@ -22,11 +22,11 @@ class CustomRichText extends StatelessWidget {
       child: Text.rich(
         TextSpan(
             text: discription,
-            style: const TextStyle(color: kFlaceDark900, fontSize: 16),
+            style: const TextStyle(color: kGotripDark900, fontSize: 16),
             children: [
               TextSpan(
                   text: text,
-                  style: const TextStyle(color: kFlaceGreen300, fontSize: 16),
+                  style: const TextStyle(color: kGotripGreen300, fontSize: 16),
                   recognizer: TapGestureRecognizer()..onTap = onTap),
             ]),
       ),

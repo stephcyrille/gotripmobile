@@ -1,9 +1,8 @@
-import 'package:flace/flace_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flace/pages/home.dart';
-import 'package:flace/colors.dart';
-import 'package:flace/widgets/custom_header_auth.dart';
-import 'package:flace/widgets/custom_form_field.dart';
+import 'package:gotripmobile/pages/home.dart';
+import 'package:gotripmobile/colors.dart';
+import 'package:gotripmobile/widgets/custom_header_auth.dart';
+import 'package:gotripmobile/widgets/custom_form_field.dart';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({Key? key}) : super(key: key);
@@ -44,7 +43,7 @@ class _SigninPageState extends State<SigninPage> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            color: kFlaceGreen300,
+            color: kGotripGreen300,
           ),
           CustomHeader(
             text: 'Accueil',
@@ -59,7 +58,7 @@ class _SigninPageState extends State<SigninPage> {
               height: MediaQuery.of(context).size.height * 0.9,
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
-                  color: kFlaceBackgroundWhite,
+                  color: kGotripBackgroundWhite,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40))),
@@ -76,10 +75,10 @@ class _SigninPageState extends State<SigninPage> {
                         elevation: 0.0,
                         shape: CircleBorder(),
                         child: CircleAvatar(
-                          backgroundColor: kFlaceBackgroundWhite,
+                          backgroundColor: kGotripBackgroundWhite,
                           child: Icon(
                             Icons.account_circle_rounded,
-                            color: kFlaceGreen300,
+                            color: kGotripGreen300,
                             size: 100,
                           ),
                           radius: 50.0,
@@ -123,7 +122,7 @@ class _SigninPageState extends State<SigninPage> {
                           child: Text(
                             "Mot de passe oublié?",
                             style: TextStyle(
-                                color: kFlaceGreen300.withOpacity(0.7),
+                                color: kGotripGreen300.withOpacity(0.7),
                                 fontWeight: FontWeight.w500),
                           ),
                         ),
@@ -133,7 +132,7 @@ class _SigninPageState extends State<SigninPage> {
                   // AuthButton(
                   //   onTap: () {},
                   //   text: 'SE CONNECTER',
-                  //   boxColor: kFlaceGreen400,
+                  //   boxColor: kGotripGreen400,
                   //   boxStyle: KTextStyle.authButtonTextStyle,
                   // ),
                   // const SizedBox(height: 30),

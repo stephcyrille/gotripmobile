@@ -1,4 +1,4 @@
-import 'package:flace/colors.dart';
+import 'package:gotripmobile/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -30,7 +30,7 @@ class FormError extends StatelessWidget {
         ),
         Text(
           error,
-          style: const TextStyle(color: kFlaceDark900),
+          style: const TextStyle(color: kGotripDark900),
         )
       ],
     );

@@ -1,12 +1,9 @@
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:flace/animations/BouncyPageRoute.dart';
-import 'package:flace/flace_styles.dart';
-import 'package:flace/widgets/custom_button.dart';
+import 'package:gotripmobile/animations/bouncy_page_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flace/animations/delayed_animation.dart';
-import 'package:flace/colors.dart';
+import 'package:gotripmobile/animations/delayed_animation.dart';
+import 'package:gotripmobile/colors.dart';
 import 'auth/registration.dart';
-import 'auth/login.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -38,11 +35,11 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    const color = kFlaceSurfaceWhite;
+    const color = kGotripSurfaceWhite;
     _scale = 1 - _controller.value;
 
     return Scaffold(
-      backgroundColor: kFlaceGreen400,
+      backgroundColor: kGotripBlue400,
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -68,7 +65,7 @@ class _HomePageState extends State<HomePage>
                 delay: delayedAmount + 1500),
             DelayedAnimation(
               child: const Text(
-                "Bienvenue dans FLACE",
+                "Bienvenue dans Gotrip",
                 style: TextStyle(
                     fontWeight: FontWeight.bold, fontSize: 35.0, color: color),
               ),
@@ -144,7 +141,7 @@ class _HomePageState extends State<HomePage>
             style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
-                color: kFlaceGreen400),
+                color: kGotripBlue400),
           ),
         ),
       );

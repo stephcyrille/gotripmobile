@@ -1,22 +1,22 @@
-import 'package:flace/screens/spash/splash_screen.dart';
+import 'package:gotripmobile/screens/spash/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flace/screens/auth/signin/signin.dart';
-import 'package:flace/routes.dart';
-import 'package:flace/theme.dart';
+import 'package:gotripmobile/screens/auth/signin/signin.dart';
+import 'package:gotripmobile/routes.dart';
+import 'package:gotripmobile/theme.dart';
 
-class FlaceApp extends StatefulWidget {
-  const FlaceApp({Key? key}) : super(key: key);
+class GotripApp extends StatefulWidget {
+  const GotripApp({Key? key}) : super(key: key);
 
   @override
-  _FlaceAppState createState() => _FlaceAppState();
+  _GotripAppState createState() => _GotripAppState();
 }
 
-class _FlaceAppState extends State<FlaceApp> {
+class _GotripAppState extends State<GotripApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flace',
+      title: 'GoTrip',
       initialRoute: SplashScreen.routeName,
       routes: routes,
       onGenerateRoute: _getRoute,

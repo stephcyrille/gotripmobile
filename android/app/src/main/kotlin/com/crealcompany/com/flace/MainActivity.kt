@@ -1,4 +1,4 @@
-package com.crealcompany.com.flace
+package com.adeoconsulting.com.gotrip
 
 import io.flutter.embedding.android.FlutterActivity
 

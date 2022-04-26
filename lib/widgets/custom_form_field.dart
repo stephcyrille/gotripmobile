@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flace/colors.dart';
-import 'package:flace/flace_styles.dart';
+import 'package:gotripmobile/colors.dart';
+import 'package:gotripmobile/gotrip_styles.dart';
 
 class CustomFormField extends StatelessWidget {
   final String headingText;
@@ -55,13 +55,13 @@ class CustomFormField extends StatelessWidget {
                   hintText: hintText,
                   hintStyle: KTextStyle.textFieldHintStyle,
                   focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: kFlaceGreen400),
+                    borderSide: BorderSide(color: kGotripBlue400),
                   ),
                   enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: kFlaceDark900),
+                    borderSide: BorderSide(color: kGotripDark900),
                   ),
                   // border: InputBorder.none
-                  fillColor: kFlaceGreen300,
+                  fillColor: kGotripGreen300,
                   suffixIcon: suffixIcon),
             ),
           ),

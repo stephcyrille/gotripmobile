@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flace/colors.dart';
-import 'package:flace/widgets/custom_header_auth.dart';
-import 'package:flace/screens/spash/splash_screen.dart';
-import 'package:flace/screens/auth/signin/components/body.dart';
+import 'package:gotripmobile/colors.dart';
+import 'package:gotripmobile/widgets/custom_header_auth.dart';
+import 'package:gotripmobile/screens/spash/splash_screen.dart';
+import 'package:gotripmobile/screens/auth/signin/components/body.dart';
 
 class SigninPage extends StatefulWidget {
   static String routeName = '/signin';
@@ -13,7 +13,6 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
-  final _usenameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _usernameFocusNode = FocusNode();
   final _passwordFocusNode = FocusNode();
@@ -44,7 +43,7 @@ class _SigninPageState extends State<SigninPage> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            color: kFlaceGreen300,
+            color: kGotripGreen300,
           ),
           CustomHeader(
             text: 'Se connecter',
@@ -61,14 +60,14 @@ class _SigninPageState extends State<SigninPage> {
               height: MediaQuery.of(context).size.height * 0.9,
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
-                  color: kFlaceBackgroundWhite,
+                  color: kGotripBackgroundWhite,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40))),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 60),
+                children: const [
+                  SizedBox(height: 60),
                   Body(),
                 ],
               ),

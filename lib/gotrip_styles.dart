@@ -4,10 +4,10 @@ import 'colors.dart';
 
 class KTextStyle {
   static const headerTextStyle = TextStyle(
-      color: kFlaceDark900, fontSize: 28, fontWeight: FontWeight.w700);
+      color: kGotripDark900, fontSize: 28, fontWeight: FontWeight.w700);
 
   static const textFieldHeading = TextStyle(
-      color: kFlaceGreen500, fontSize: 16, fontWeight: FontWeight.w400);
+      color: kGotripDarkBlue500, fontSize: 16, fontWeight: FontWeight.w400);
 
   static const textFieldHintStyle = TextStyle(
     color: Colors.grey,
@@ -17,11 +17,11 @@ class KTextStyle {
   );
 
   static const authButtonTextStyle = TextStyle(
-      fontSize: 18, fontWeight: FontWeight.w600, color: kFlaceBackgroundWhite);
+      fontSize: 18, fontWeight: FontWeight.w600, color: kGotripBackgroundWhite);
 
   static const authGoogleButtonTextStyle = TextStyle(
-      fontSize: 18, fontWeight: FontWeight.w600, color: kFlaceBackgroundWhite);
+      fontSize: 18, fontWeight: FontWeight.w600, color: kGotripBackgroundWhite);
 
   static const authFacebookButtonTextStyle = TextStyle(
-      fontSize: 18, fontWeight: FontWeight.w600, color: kFlaceBackgroundWhite);
+      fontSize: 18, fontWeight: FontWeight.w600, color: kGotripBackgroundWhite);
 }

@@ -1,6 +1,6 @@
-# flace
+# Gotrip
 
-Resell clothes market place in cameroon
+Gotrip virtual travel agency application
 
 ## Getting Started
 

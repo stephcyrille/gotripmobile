@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-const kFlaceGreen50 = Color(0xFFE4F6EB);
-const kFlaceGreen100 = Color(0xFFBEE7CD);
-const kFlaceGreen300 = Color(0xFF63C98C);
-const kFlaceGreen400 = Color(0xFF37BD73);
-const kFlaceGreen500 = Color(0xFF005F26);
+const kGotripGreen50 = Color(0xFFE3F2FD);
+const kGotripGreen100 = Color(0xFFBBDEFB);
+const kGotripGreen300 = Color(0xFF42A5F5);
+const kGotripBlue400 = Color(0xFF1976D2);
+const kGotripDarkBlue500 = Color(0xFF0D47A1);
 
-const kFlaceYellow = Color(0xFFFFB700);
-const kFlaceDark900 = Color(0xFF163938);
+const kGotripOrange = Color(0xFFF57C00);
+const kGotripDark900 = Color(0xFF163938);
 
-const kFlaceErrorRed = Color(0xFFC5032B);
+const kGotripErrorRed = Color(0xFFD32F2F);
 
-const kFlaceSurfaceWhite = Color(0xFFFFFBFA);
-const kFlaceBackgroundWhite = Colors.white;
+const kGotripSurfaceWhite = Color(0xFFFFFBFA);
+const kGotripBackgroundWhite = Colors.white;
 
-const kFlacePrimaryGradientColor = LinearGradient(
+const kGotripPrimaryGradientColor = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [kFlaceGreen400, kFlaceGreen500]);
+    colors: [kGotripBlue400, kGotripDarkBlue500]);

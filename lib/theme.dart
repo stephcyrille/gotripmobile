@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flace/colors.dart';
+import 'package:gotripmobile/colors.dart';
 import 'package:flutter/services.dart';
 
 ThemeData theme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
       colorScheme: base.colorScheme.copyWith(
-          primary: kFlaceGreen400,
-          onPrimary: kFlaceDark900,
-          secondary: kFlaceYellow,
-          error: kFlaceErrorRed),
+          primary: kGotripBlue400,
+          onPrimary: kGotripDark900,
+          secondary: kGotripOrange,
+          error: kGotripErrorRed),
       scaffoldBackgroundColor: Colors.white,
       appBarTheme: appBarTheme(),
       visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -19,17 +19,17 @@ ThemeData theme() {
 
 TextTheme textTheme() {
   return const TextTheme(
-      bodyText1: TextStyle(color: kFlaceDark900),
-      bodyText2: TextStyle(color: kFlaceDark900));
+      bodyText1: TextStyle(color: kGotripDark900),
+      bodyText2: TextStyle(color: kGotripDark900));
 }
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
-    color: kFlaceBackgroundWhite,
+    color: kGotripBackgroundWhite,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.black),
     textTheme: TextTheme(
-      headline6: TextStyle(color: kFlaceBackgroundWhite, fontSize: 18.0),
+      headline6: TextStyle(color: kGotripBackgroundWhite, fontSize: 18.0),
     ),
     systemOverlayStyle: SystemUiOverlayStyle.dark,
   );
@@ -41,7 +41,7 @@ InputDecorationTheme inputDecorationTheme() {
       borderRadius: BorderRadius.circular(28),
       gapPadding: 10.0);
   OutlineInputBorder outlineInputBorderFocus = OutlineInputBorder(
-      borderSide: const BorderSide(color: kFlaceGreen300),
+      borderSide: const BorderSide(color: kGotripGreen300),
       borderRadius: BorderRadius.circular(28),
       gapPadding: 10.0);
   return InputDecorationTheme(

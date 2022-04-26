@@ -1,11 +1,8 @@
-import 'package:flace/flace_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flace/pages/home.dart';
-import 'package:flace/colors.dart';
-import 'package:flace/widgets/custom_header_auth.dart';
-import 'package:flace/widgets/custom_form_field.dart';
-import 'package:flace/widgets/custom_rich_text.dart';
-import 'package:flace/widgets/custom_button.dart';
+import 'package:gotripmobile/pages/home.dart';
+import 'package:gotripmobile/colors.dart';
+import 'package:gotripmobile/widgets/custom_header_auth.dart';
+import 'package:gotripmobile/widgets/custom_form_field.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -46,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            color: kFlaceGreen300,
+            color: kGotripGreen300,
           ),
           CustomHeader(
             text: 'Accueil',
@@ -61,7 +58,7 @@ class _SignUpPageState extends State<SignUpPage> {
               height: MediaQuery.of(context).size.height * 0.9,
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
-                  color: kFlaceBackgroundWhite,
+                  color: kGotripBackgroundWhite,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40))),
@@ -97,7 +94,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   // AuthButton(
                   //   onTap: () {},
                   //   text: 'S\'INSCRIRE',
-                  //   boxColor: kFlaceGreen400,
+                  //   boxColor: kGotripGreen400,
                   //   boxStyle: KTextStyle.authButtonTextStyle,
                   // ),
                   // const SizedBox(height: 30),

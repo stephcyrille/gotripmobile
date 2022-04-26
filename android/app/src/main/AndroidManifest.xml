@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.crealcompany.com.flace">
+    package="com.adeoconsulting.com.gotrip">
    <application
-        android:label="flace"
+        android:label="Gotrip"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

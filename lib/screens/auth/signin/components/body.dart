@@ -1,13 +1,13 @@
-import 'package:flace/colors.dart';
-import 'package:flace/components/default_button.dart';
-import 'package:flace/components/form_error.dart';
-import 'package:flace/form_error_validator.dart';
+import 'package:gotripmobile/colors.dart';
+import 'package:gotripmobile/components/default_button.dart';
+import 'package:gotripmobile/components/form_error.dart';
+import 'package:gotripmobile/form_error_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:flace/components/custom_surfix.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gotripmobile/components/custom_surfix.dart';
 
 class Body extends StatelessWidget {
+  const Body({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,21 +16,21 @@ class Body extends StatelessWidget {
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
-                  children: [
-                    const Text(
+                  children: const [
+                    Text(
                       'Bon retour',
                       style: TextStyle(
                           fontSize: 33,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 10.0),
-                    const Text(
+                    SizedBox(height: 10.0),
+                    Text(
                       'Connecte toi avec ton adresse email et ton mot de passe \nou continuer avec son compte social',
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 30.0),
-                    const SignForm()
+                    SizedBox(height: 50.0),
+                    SignForm()
                   ],
                 ))));
   }
@@ -61,7 +61,10 @@ class _SignFormState extends State<SignForm> {
           FormError(errors: errors),
           const SizedBox(height: 20.0),
           Row(
-            children: [Checkbox(value: false, onChanged: (value) {})],
+            children: [
+              Checkbox(value: false, onChanged: (value) {}),
+              const Text('Se souvenir de moi')
+            ],
           ),
           DefaultButton(
             text: 'Se connecter',
@@ -106,7 +109,7 @@ class _SignFormState extends State<SignForm> {
         }
         return null;
       },
-      style: const TextStyle(color: kFlaceDark900),
+      style: const TextStyle(color: kGotripDark900),
       decoration: const InputDecoration(
         hintText: 'Saissisez votre mot de passe',
         labelText: 'Mot de passe',
@@ -146,7 +149,7 @@ class _SignFormState extends State<SignForm> {
         }
         return null;
       },
-      style: const TextStyle(color: kFlaceDark900),
+      style: const TextStyle(color: kGotripDark900),
       decoration: const InputDecoration(
         hintText: 'Saissisez votre email',
         labelText: 'Email',

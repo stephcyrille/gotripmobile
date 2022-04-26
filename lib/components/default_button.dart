@@ -1,5 +1,5 @@
-import 'package:flace/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:gotripmobile/colors.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
@@ -16,8 +16,12 @@ class DefaultButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       height: 58.0,
-      child: FlatButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: kGotripBlue400,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        ),
         onPressed: press,
         child: Text(
           text,
@@ -27,7 +31,6 @@ class DefaultButton extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        color: kFlaceGreen400,
       ),
     );
   }
