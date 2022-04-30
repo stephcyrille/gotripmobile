@@ -15,21 +15,23 @@ class Body extends StatelessWidget {
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(children: const [
-          SizedBox(height: 10),
+        child: Column(children: [
+          const SizedBox(height: 10),
           Text(
-            "Mot de passe oublié",
-            style: TextStyle(
+            "Mot de passe oublié".toUpperCase(),
+            style: const TextStyle(
                 fontSize: 28,
                 color: kGotripDark900,
                 fontWeight: FontWeight.bold),
           ),
-          Text(
-            "Veuillez saisir votre adresse email, nous allons vous \nenvoyer un lien pour accéder à votre compte",
+          const SizedBox(height: 20),
+          const Text(
+            "Veuillez saisir votre adresse email, nous allons vous envoyer un lien pour accéder à votre compte",
             textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 18),
           ),
-          SizedBox(height: 70),
-          ForgotPassForm(),
+          const SizedBox(height: 70),
+          const ForgotPassForm(),
         ]),
       ),
     );
@@ -96,9 +98,9 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
               // labelStyle: const TextStyle(color: kGotripOrange400),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           FormError(errors: errors),
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
           DefaultButton(
               press: () {
                 if (_formKey.currentState!.validate()) {

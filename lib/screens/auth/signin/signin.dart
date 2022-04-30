@@ -36,39 +36,35 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   Widget build(BuildContext context) {
-    // double height = MediaQuery.of(context).size.height;
-    // var padding = MediaQuery.of(context).padding;
-    // double newHeight = height - padding.top - padding.bottom;
-
     return Scaffold(
       body: SafeArea(
-          child: Stack(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            color: kGotripLightOrange50,
-          ),
-          CustomHeader(
-            text: 'Se connecter',
-            onTap: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const GreetingScreen()));
-            },
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.08,
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.9,
+          child: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                  color: kGotripBackgroundWhite,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40))),
-              child: SingleChildScrollView(
+              color: kGotripLightOrange50,
+            ),
+            CustomHeader(
+              text: 'Se connecter',
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const GreetingScreen()));
+              },
+            ),
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.08,
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.9,
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                    color: kGotripBackgroundWhite,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40))),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
@@ -78,8 +74,8 @@ class _SigninPageState extends State<SigninPage> {
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       )),
     );
   }
