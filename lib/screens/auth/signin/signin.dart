@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gotripmobile/colors.dart';
-import 'package:gotripmobile/widgets/custom_header_auth.dart';
+import 'package:gotripmobile/components/custom_header_auth.dart';
 import 'package:gotripmobile/screens/spash/splash_screen.dart';
 import 'package:gotripmobile/screens/auth/signin/components/body.dart';
 
@@ -36,6 +36,10 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   Widget build(BuildContext context) {
+    // double height = MediaQuery.of(context).size.height;
+    // var padding = MediaQuery.of(context).padding;
+    // double newHeight = height - padding.top - padding.bottom;
+
     return Scaffold(
       body: SafeArea(
           child: Stack(
@@ -43,7 +47,7 @@ class _SigninPageState extends State<SigninPage> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            color: kGotripGreen300,
+            color: kGotripLightOrange50,
           ),
           CustomHeader(
             text: 'Se connecter',
@@ -64,12 +68,14 @@ class _SigninPageState extends State<SigninPage> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40))),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  SizedBox(height: 60),
-                  Body(),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    SizedBox(height: 60),
+                    Body(),
+                  ],
+                ),
               ),
             ),
           ),

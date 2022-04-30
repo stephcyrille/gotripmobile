@@ -6,7 +6,7 @@ ThemeData theme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
       colorScheme: base.colorScheme.copyWith(
-          primary: kGotripBlue400,
+          primary: kGotripOrange400,
           onPrimary: kGotripDark900,
           secondary: kGotripOrange,
           error: kGotripErrorRed),
@@ -28,9 +28,6 @@ AppBarTheme appBarTheme() {
     color: kGotripBackgroundWhite,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.black),
-    textTheme: TextTheme(
-      headline6: TextStyle(color: kGotripBackgroundWhite, fontSize: 18.0),
-    ),
     systemOverlayStyle: SystemUiOverlayStyle.dark,
   );
 }
@@ -41,7 +38,7 @@ InputDecorationTheme inputDecorationTheme() {
       borderRadius: BorderRadius.circular(28),
       gapPadding: 10.0);
   OutlineInputBorder outlineInputBorderFocus = OutlineInputBorder(
-      borderSide: const BorderSide(color: kGotripGreen300),
+      borderSide: const BorderSide(color: kGotripBlue300),
       borderRadius: BorderRadius.circular(28),
       gapPadding: 10.0);
   return InputDecorationTheme(

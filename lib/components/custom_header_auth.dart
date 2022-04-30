@@ -19,7 +19,7 @@ class CustomHeader extends StatelessWidget {
             onTap: onTap,
             child: const Icon(
               Icons.arrow_back_ios_new_rounded,
-              color: kGotripBackgroundWhite,
+              color: kGotripDark900,
               size: 24,
             ),
           ),
@@ -29,7 +29,7 @@ class CustomHeader extends StatelessWidget {
           Text(
             text,
             style: const TextStyle(
-                color: kGotripSurfaceWhite,
+                color: kGotripDark900,
                 fontSize: 20.0,
                 fontWeight: FontWeight.w400),
             // style: KTextStyle.headerTextStyle,

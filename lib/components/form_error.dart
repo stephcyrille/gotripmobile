@@ -17,22 +17,25 @@ class FormError extends StatelessWidget {
             errors.length, (index) => formErrorText(error: errors[index])));
   }
 
-  Row formErrorText({required String error}) {
-    return Row(
-      children: [
-        SvgPicture.asset(
-          'assets/icons/error.svg',
-          height: 16.0,
-          width: 16.0,
-        ),
-        const SizedBox(
-          width: 15,
-        ),
-        Text(
-          error,
-          style: const TextStyle(color: kGotripDark900),
-        )
-      ],
+  Padding formErrorText({required String error}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2.0),
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            'assets/icons/error.svg',
+            height: 16.0,
+            width: 16.0,
+          ),
+          const SizedBox(
+            width: 15,
+          ),
+          Text(
+            error,
+            style: const TextStyle(color: kGotripDark900),
+          )
+        ],
+      ),
     );
   }
 }
