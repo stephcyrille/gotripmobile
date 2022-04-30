@@ -1,4 +1,4 @@
-import 'package:gotripmobile/colors.dart';
+import 'package:gotripmobile/components/no_account_text.dart';
 import 'package:gotripmobile/components/social_card.dart';
 import 'package:flutter/material.dart';
 import 'package:gotripmobile/screens/auth/signin/components/sign_form.dart';
@@ -50,16 +50,7 @@ class Body extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 20.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text("Vous n'avez pas de compte ? ",
-                          style: TextStyle(fontSize: 16)),
-                      Text("S'inscrire",
-                          style:
-                              TextStyle(fontSize: 16, color: kGotripOrange400))
-                    ],
-                  )
+                  const NoAccountText()
                 ],
               ),
             )));

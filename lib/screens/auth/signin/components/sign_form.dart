@@ -4,6 +4,7 @@ import 'package:gotripmobile/components/custom_surfix.dart';
 import 'package:gotripmobile/components/default_button.dart';
 import 'package:gotripmobile/components/form_error.dart';
 import 'package:gotripmobile/form_error_validator.dart';
+import 'package:gotripmobile/screens/auth/forgot_password/forgot_password_screen.dart';
 
 class SignForm extends StatefulWidget {
   const SignForm({Key? key}) : super(key: key);
@@ -40,9 +41,15 @@ class _SignFormState extends State<SignForm> {
                   }),
               const Text('Se souvenir de moi'),
               const Spacer(),
-              const Text(
-                'Mot de passe oublié',
-                style: TextStyle(decoration: TextDecoration.underline),
+              GestureDetector(
+                onTap: () {
+                  Navigator.popAndPushNamed(
+                      context, ForgotPassWordScreen.routeName);
+                },
+                child: const Text(
+                  'Mot de passe oublié',
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
               )
             ],
           ),
