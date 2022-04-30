@@ -1,6 +1,6 @@
 import 'package:gotripmobile/screens/greeting/greeting_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:gotripmobile/screens/auth/signin/signin.dart';
+import 'package:gotripmobile/screens/auth/signin/signin_screen.dart';
 import 'package:gotripmobile/routes.dart';
 import 'package:gotripmobile/theme.dart';
 

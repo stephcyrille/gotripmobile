@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gotripmobile/colors.dart';
 import 'package:gotripmobile/components/custom_header_auth.dart';
 import 'package:gotripmobile/screens/auth/forgot_password/components/body.dart';
-import 'package:gotripmobile/screens/auth/signin/signin.dart';
+import 'package:gotripmobile/screens/auth/signin/signin_screen.dart';
 
 class ForgotPassWordScreen extends StatelessWidget {
   static String routeName = 'forgot_password';

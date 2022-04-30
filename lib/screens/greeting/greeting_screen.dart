@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gotripmobile/animations/bouncy_page_route.dart';
 import 'package:gotripmobile/colors.dart';
-import 'package:gotripmobile/screens/auth/signin/signin.dart';
+import 'package:gotripmobile/screens/auth/signin/signin_screen.dart';
 import 'package:gotripmobile/components/default_button.dart';
 
 class GreetingScreen extends StatefulWidget {

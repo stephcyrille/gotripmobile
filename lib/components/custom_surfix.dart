@@ -15,7 +15,7 @@ class CustomSurffix extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
         child: SvgPicture.asset(
           svgIcon,
-          height: 18.0,
+          height: 15.0,
         ));
   }
 }
