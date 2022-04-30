@@ -4,15 +4,15 @@ import 'package:gotripmobile/colors.dart';
 import 'package:gotripmobile/screens/auth/signin/signin.dart';
 import 'package:gotripmobile/components/default_button.dart';
 
-class SplashScreen extends StatefulWidget {
+class GreetingScreen extends StatefulWidget {
   static String routeName = '/';
-  const SplashScreen({Key? key}) : super(key: key);
+  const GreetingScreen({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _GreetingScreenState createState() => _GreetingScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _GreetingScreenState extends State<GreetingScreen> {
   final _controller = PageController();
   int _currentPage = 0;
 

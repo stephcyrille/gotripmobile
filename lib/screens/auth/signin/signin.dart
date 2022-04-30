@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gotripmobile/colors.dart';
 import 'package:gotripmobile/components/custom_header_auth.dart';
-import 'package:gotripmobile/screens/spash/splash_screen.dart';
+import 'package:gotripmobile/screens/greeting/greeting_screen.dart';
 import 'package:gotripmobile/screens/auth/signin/components/body.dart';
 
 class SigninPage extends StatefulWidget {
@@ -55,7 +55,7 @@ class _SigninPageState extends State<SigninPage> {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const SplashScreen()));
+                      builder: (context) => const GreetingScreen()));
             },
           ),
           Positioned(

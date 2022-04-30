@@ -1,4 +1,4 @@
-import 'package:gotripmobile/screens/spash/splash_screen.dart';
+import 'package:gotripmobile/screens/greeting/greeting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gotripmobile/screens/auth/signin/signin.dart';
 import 'package:gotripmobile/routes.dart';
@@ -17,7 +17,7 @@ class _GotripAppState extends State<GotripApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'GoTrip',
-      initialRoute: SplashScreen.routeName,
+      initialRoute: GreetingScreen.routeName,
       routes: routes,
       onGenerateRoute: _getRoute,
       theme: theme(),
