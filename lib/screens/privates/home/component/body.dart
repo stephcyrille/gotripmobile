@@ -66,13 +66,17 @@ class _BodyState extends State<Body> {
                           children: [
                             TextButton(
                               onPressed: () => _selectDate(context),
-                              child: const Text(
-                                'Date de départ',
-                                style: TextStyle(fontSize: 16.0),
+                              child: Row(
+                                children: [
+                                  const Text(
+                                    'Date de départ',
+                                    style: TextStyle(fontSize: 16.0),
+                                  ),
+                                  const Icon(Icons.arrow_drop_down,
+                                      color: kGotripOrange),
+                                ],
                               ),
                             ),
-                            const Icon(Icons.arrow_drop_down,
-                                color: kGotripOrange),
                           ],
                         ),
                         Text(
