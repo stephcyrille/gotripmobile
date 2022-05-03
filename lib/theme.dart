@@ -25,7 +25,7 @@ TextTheme textTheme() {
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
-    color: kGotripBackgroundWhite,
+    color: kGotripLightOrange50,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.black),
     systemOverlayStyle: SystemUiOverlayStyle.dark,

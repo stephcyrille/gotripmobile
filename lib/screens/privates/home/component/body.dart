@@ -1,0 +1,181 @@
+import 'package:flutter/material.dart';
+import 'package:gotripmobile/colors.dart';
+import 'package:gotripmobile/components/default_button.dart';
+import 'package:gotripmobile/screens/privates/home/component/place_select.dart';
+import 'package:gotripmobile/screens/privates/home/component/travel_card.dart';
+
+class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  String fromPlace = 'Douala';
+  String toPlace = 'Yaoundé';
+  List<String> cities = [
+    "Baffoussamn",
+    "Bertoua",
+    "Douala",
+    "Ebolowa",
+    "Kribi",
+    "Sangmelima",
+    "Yaoundé",
+  ];
+  List<String> passengerList = ['1', '2', '3', '4', '5'];
+  String passengers = '1';
+
+  void removeItem(String newCity) {
+    setState(() {
+      cities = List.from(cities)..remove(newCity);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const SizedBox(height: 30),
+          const Text(
+            'Définissez votre destination',
+            style: TextStyle(fontSize: 19.0),
+          ),
+          Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+              child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                  decoration: const BoxDecoration(
+                      color: kGotripSurfaceWhite,
+                      borderRadius: BorderRadius.all(Radius.circular(36))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.75,
+                        child: Column(
+                          children: [
+                            TripPlaceSelect(
+                              hintText: 'Ville de départ',
+                              place: fromPlace,
+                              items: cities,
+                              onChange: (String? newValue) {
+                                setState(() {
+                                  fromPlace = newValue!;
+                                });
+                              },
+                            ),
+                            const SizedBox(height: 10.0),
+                            TripPlaceSelect(
+                              hintText: 'Ville d\'arrivée',
+                              place: toPlace,
+                              items: cities,
+                              isStart: false,
+                              onChange: (String? newValue) {
+                                setState(() {
+                                  toPlace = newValue!;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 40.0,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: kGotripLightOrange50,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                          ),
+                          onPressed: () {},
+                          child: const Icon(
+                            Icons.swap_vert,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      )
+                    ],
+                  ))),
+          const SizedBox(height: 30),
+          SizedBox(
+            // height: size.height * 0.5,
+            child: Stack(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: const BoxDecoration(
+                      color: kGotripSurfaceWhite,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(36),
+                        topRight: Radius.circular(36),
+                      )),
+                  child: Column(children: [
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 20.0),
+                      height: 40.0,
+                      child: ListView(
+                        // This next line does the trick.
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          for (int i = 6; i < 10; i++)
+                            i == 7
+                                ? Container(
+                                    margin: const EdgeInsets.only(right: 10.0),
+                                    child: DefaultButton(
+                                      press: () {},
+                                      text: '0$i : 00',
+                                      width: 90,
+                                      backgroundColor: kGotripOrange,
+                                      textColor: kGotripBackgroundWhite,
+                                      // isOutlined: true,
+                                    ),
+                                  )
+                                : Container(
+                                    margin: const EdgeInsets.only(right: 10.0),
+                                    child: DefaultButton(
+                                      press: () {},
+                                      text: '0$i : 00',
+                                      width: 90,
+                                      backgroundColor: kGotripBackgroundWhite,
+                                      textColor: kGotripOrange,
+                                      isOutlined: true,
+                                    ),
+                                  ),
+                        ],
+                      ),
+                    ),
+                    for (int i = 0; i < 5; i++)
+                      TravelCard(
+                        passengers: passengers,
+                        items: passengerList,
+                        tripDate: '18/07/2022',
+                        tripHour: '08 : 00',
+                        fromPlace: 'Douala',
+                        toPlace: 'Yaoundé',
+                        price: '3000',
+                        currency: 'FCFA',
+                        vendorAvatar: 'assets/1024.png',
+                        vendorName: 'Ongola Voyage Express',
+                        onChange: (String? newValue) {
+                          setState(() {
+                            passengers = newValue!;
+                          });
+                        },
+                      ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ]),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

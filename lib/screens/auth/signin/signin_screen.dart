@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gotripmobile/colors.dart';
 import 'package:gotripmobile/components/custom_header_auth.dart';
 import 'package:gotripmobile/screens/greeting/greeting_screen.dart';
@@ -37,24 +38,40 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kGotripLightOrange50,
+      appBar: AppBar(
+          elevation: 0,
+          title: const Text('Se connecter'),
+          leading: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: IconButton(
+              icon: SvgPicture.asset('assets/svg/left-arrow.svg'),
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const GreetingScreen()));
+              },
+            ),
+          )),
       body: SafeArea(
           child: ListView(
         children: [
-          CustomHeader(
-            text: '',
-            onTap: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const GreetingScreen()));
-            },
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              SizedBox(height: 60),
-              Body(),
-            ],
+          Container(
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(
+                color: kGotripSurfaceWhite,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(36),
+                  topRight: Radius.circular(36),
+                )),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                SizedBox(height: 60),
+                Body(),
+              ],
+            ),
           ),
         ],
       )),

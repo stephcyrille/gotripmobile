@@ -6,29 +6,43 @@ class DefaultButton extends StatelessWidget {
     Key? key,
     required this.press,
     required this.text,
+    this.height = 60.0,
+    this.backgroundColor = kGotripOrange400,
+    this.textColor = Colors.white,
+    this.width = double.infinity,
+    this.isOutlined = false,
   }) : super(key: key);
 
   final VoidCallback press;
   final String text;
+  final Color backgroundColor;
+  final Color textColor;
+  final double height;
+  final double width;
+  final bool isOutlined;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: 60.0,
+      width: width,
+      height: height,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: kGotripOrange400,
+          backgroundColor: backgroundColor,
+          side: isOutlined == true
+              ? const BorderSide(
+                  color: kGotripOrange, width: 1, style: BorderStyle.solid)
+              : null,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
         onPressed: press,
         child: Text(
           text,
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18.0,
-            color: Colors.white,
+            color: textColor,
           ),
         ),
       ),

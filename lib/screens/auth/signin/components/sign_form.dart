@@ -5,6 +5,7 @@ import 'package:gotripmobile/components/default_button.dart';
 import 'package:gotripmobile/components/form_error.dart';
 import 'package:gotripmobile/form_error_validator.dart';
 import 'package:gotripmobile/screens/auth/forgot_password/forgot_password_screen.dart';
+import 'package:gotripmobile/screens/privates/home/home_screen.dart';
 
 class SignForm extends StatefulWidget {
   const SignForm({Key? key}) : super(key: key);
@@ -60,6 +61,10 @@ class _SignFormState extends State<SignForm> {
             press: () {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen()));
               }
             },
           ),
