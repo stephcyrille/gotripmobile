@@ -25,11 +25,25 @@ class _BodyState extends State<Body> {
   ];
   List<String> passengerList = ['1', '2', '3', '4', '5'];
   String passengers = '1';
+  DateTime selectedDate = DateTime.now();
 
   void removeItem(String newCity) {
     setState(() {
       cities = List.from(cities)..remove(newCity);
     });
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2021, 12),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
   }
 
   @override
@@ -38,68 +52,94 @@ class _BodyState extends State<Body> {
       child: Column(
         children: [
           const SizedBox(height: 30),
-          const Text(
-            'Définissez votre destination',
-            style: TextStyle(fontSize: 19.0),
-          ),
           Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-              child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
-                  decoration: const BoxDecoration(
-                      color: kGotripSurfaceWhite,
-                      borderRadius: BorderRadius.all(Radius.circular(36))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.75,
-                        child: Column(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10.0, 0, 20.0, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
                           children: [
-                            TripPlaceSelect(
-                              hintText: 'Ville de départ',
-                              place: fromPlace,
-                              items: cities,
-                              onChange: (String? newValue) {
-                                setState(() {
-                                  fromPlace = newValue!;
-                                });
-                              },
+                            TextButton(
+                              onPressed: () => _selectDate(context),
+                              child: const Text(
+                                'Date de départ',
+                                style: TextStyle(fontSize: 16.0),
+                              ),
                             ),
-                            const SizedBox(height: 10.0),
-                            TripPlaceSelect(
-                              hintText: 'Ville d\'arrivée',
-                              place: toPlace,
-                              items: cities,
-                              isStart: false,
-                              onChange: (String? newValue) {
-                                setState(() {
-                                  toPlace = newValue!;
-                                });
-                              },
-                            ),
+                            const Icon(Icons.arrow_drop_down,
+                                color: kGotripOrange),
                           ],
                         ),
-                      ),
-                      SizedBox(
-                        width: 40.0,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: kGotripLightOrange50,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15)),
-                          ),
-                          onPressed: () {},
-                          child: const Icon(
-                            Icons.swap_vert,
-                            color: Colors.grey,
-                          ),
+                        Text(
+                          "${selectedDate.toLocal()}".split(' ')[0],
+                          style: const TextStyle(
+                              fontSize: 15.0, fontWeight: FontWeight.w500),
                         ),
-                      )
-                    ],
-                  ))),
+                      ],
+                    ),
+                  ),
+                  Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                      decoration: const BoxDecoration(
+                          color: kGotripSurfaceWhite,
+                          borderRadius: BorderRadius.all(Radius.circular(36))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.75,
+                            child: Column(
+                              children: [
+                                TripPlaceSelect(
+                                  hintText: 'Ville de départ',
+                                  place: fromPlace,
+                                  items: cities,
+                                  onChange: (String? newValue) {
+                                    setState(() {
+                                      fromPlace = newValue!;
+                                    });
+                                  },
+                                ),
+                                const SizedBox(height: 10.0),
+                                TripPlaceSelect(
+                                  hintText: 'Ville d\'arrivée',
+                                  place: toPlace,
+                                  items: cities,
+                                  isStart: false,
+                                  onChange: (String? newValue) {
+                                    setState(() {
+                                      toPlace = newValue!;
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: 40.0,
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: kGotripLightOrange50,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                              ),
+                              onPressed: () {},
+                              child: const Icon(
+                                Icons.swap_vert,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          )
+                        ],
+                      )),
+                ],
+              )),
           const SizedBox(height: 30),
           SizedBox(
             // height: size.height * 0.5,
@@ -115,7 +155,7 @@ class _BodyState extends State<Body> {
                       )),
                   child: Column(children: [
                     Container(
-                      margin: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 20.0),
+                      margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 20.0),
                       height: 40.0,
                       child: ListView(
                         // This next line does the trick.
@@ -160,6 +200,7 @@ class _BodyState extends State<Body> {
                         currency: 'FCFA',
                         vendorAvatar: 'assets/1024.png',
                         vendorName: 'Ongola Voyage Express',
+                        placeNumber: 46,
                         onChange: (String? newValue) {
                           setState(() {
                             passengers = newValue!;

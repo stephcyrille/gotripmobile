@@ -86,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       appBar: AppBar(
           elevation: 0,
+          title: const Text('GoTrip'),
           leading: IconButton(
             icon: SvgPicture.asset('assets/svg/menu.svg'),
             onPressed: () {

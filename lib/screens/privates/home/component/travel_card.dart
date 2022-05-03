@@ -16,6 +16,7 @@ class TravelCard extends StatelessWidget {
     required this.currency,
     required this.vendorAvatar,
     required this.vendorName,
+    required this.placeNumber,
   }) : super(key: key);
 
   final String passengers;
@@ -27,6 +28,7 @@ class TravelCard extends StatelessWidget {
   final String currency;
   final String vendorAvatar;
   final String vendorName;
+  final int placeNumber;
   final List<String> items;
   final Function(String?) onChange;
 
@@ -73,30 +75,14 @@ class TravelCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      'Nombre de passagers'.toUpperCase(),
+                      'Places disponibles'.toUpperCase(),
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                        width: 150.0,
-                        child: DropdownButton(
-                          hint: const Text('Nombre de passagers'),
-                          dropdownColor: kGotripBackgroundWhite,
-                          focusColor: kGotripOrange,
-                          isExpanded: true,
-                          items: items
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                          onChanged: onChange,
-                          value: passengers,
-                          elevation: 4,
-                          style: const TextStyle(
-                              color: kGotripDark900, fontSize: 15),
-                        )),
+                    Text(
+                      placeNumber.toString(),
+                      style: const TextStyle(
+                          fontSize: 28, fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ],
