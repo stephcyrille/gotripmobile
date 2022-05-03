@@ -3,6 +3,7 @@ import 'package:gotripmobile/screens/auth/forgot_password/forgot_password_screen
 import 'package:gotripmobile/screens/auth/signin/signin_screen.dart';
 import 'package:gotripmobile/screens/auth/signup/signup_screen.dart';
 import 'package:gotripmobile/screens/greeting/greeting_screen.dart';
+import 'package:gotripmobile/screens/privates/booking/booking_screen.dart';
 import 'package:gotripmobile/screens/privates/home/home_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -11,4 +12,5 @@ final Map<String, WidgetBuilder> routes = {
   ForgotPassWordScreen.routeName: (context) => const ForgotPassWordScreen(),
   SignupScreen.routeName: (context) => const SignupScreen(),
   HomeScreen.routeName: (context) => const HomeScreen(),
+  BookingScreen.routeName: (context) => const BookingScreen(),
 };

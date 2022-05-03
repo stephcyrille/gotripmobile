@@ -17,6 +17,7 @@ class TravelCard extends StatelessWidget {
     required this.vendorAvatar,
     required this.vendorName,
     required this.placeNumber,
+    required this.onPressed,
   }) : super(key: key);
 
   final String passengers;
@@ -31,6 +32,7 @@ class TravelCard extends StatelessWidget {
   final int placeNumber;
   final List<String> items;
   final Function(String?) onChange;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +136,7 @@ class TravelCard extends StatelessWidget {
                 SizedBox(
                   width: 180,
                   child: DefaultButton(
-                    press: () {},
+                    press: onPressed,
                     text: '$price $currency',
                     height: 50.0,
                   ),

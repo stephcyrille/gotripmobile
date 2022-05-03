@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gotripmobile/colors.dart';
 import 'package:gotripmobile/components/default_button.dart';
+import 'package:gotripmobile/screens/privates/booking/booking_screen.dart';
 import 'package:gotripmobile/screens/privates/home/component/place_select.dart';
 import 'package:gotripmobile/screens/privates/home/component/travel_card.dart';
 
@@ -202,6 +203,12 @@ class _BodyState extends State<Body> {
                         toPlace: 'Yaoundé',
                         price: '3000',
                         currency: 'FCFA',
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const BookingScreen()));
+                        },
                         vendorAvatar: 'assets/1024.png',
                         vendorName: 'Ongola Voyage Express',
                         placeNumber: 46,
