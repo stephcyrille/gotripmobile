@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:gotripmobile/colors.dart';
-import 'package:gotripmobile/components/default_button.dart';
+import 'package:gotripmobile/models/hours.dart';
 import 'package:gotripmobile/screens/privates/booking/booking_screen.dart';
 import 'package:gotripmobile/screens/privates/home/component/place_select.dart';
 import 'package:gotripmobile/screens/privates/home/component/travel_card.dart';
@@ -15,8 +15,12 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  DateTime selectedDate = DateTime.now();
   String fromPlace = 'Douala';
   String toPlace = 'Yaoundé';
+  bool isActive = true;
+  List<String> fromCities = [];
+  List<String> toCities = [];
   List<String> cities = [
     "Baffoussamn",
     "Bertoua",
@@ -28,11 +32,59 @@ class _BodyState extends State<Body> {
   ];
   List<String> passengerList = ['1', '2', '3', '4', '5'];
   String passengers = '1';
-  DateTime selectedDate = DateTime.now();
+  List<Hour> hourList = [];
+  late Hour selectedHour;
 
-  void removeItem(String newCity) {
+  @override
+  void initState() {
+    super.initState();
+    var newList = Hour.getHourServices();
+    var index = newList.indexWhere((element) => element.id == 6);
+    newList[index].isActive = true;
     setState(() {
-      cities = List.from(cities)..remove(newCity);
+      fromCities = List.from(cities)..remove(toPlace);
+      toCities = List.from(cities)..remove(fromPlace);
+      hourList = newList;
+    });
+  }
+
+  void _setUpdateCities(String newCity, String referential) {
+    if (referential == 'from') {
+      List<String> newToCities = List.from(cities)..remove(newCity);
+      setState(() {
+        toCities = newToCities;
+      });
+    } else if (referential == 'to') {
+      List<String> newFromities = List.from(cities)..remove(newCity);
+      setState(() {
+        fromCities = newFromities;
+      });
+    }
+  }
+
+  void _swapCities() {
+    var newFrom = toPlace;
+    var newTo = fromPlace;
+    // Changing first place list to avoid app crashing about the missing of place in the city list
+    setState(() {
+      fromCities = List.from(cities)..remove(newTo);
+      toCities = List.from(cities)..remove(newFrom);
+    });
+
+    setState(() {
+      fromPlace = newFrom;
+      toPlace = newTo;
+    });
+  }
+
+  void _setToggleHour(Hour selected) {
+    var newList = Hour.getHourServices();
+    var index = newList.indexWhere((element) => element.id == selected.id);
+    newList[index].isActive = true;
+
+    setState(() {
+      hourList = newList;
+      selectedHour = selected;
     });
   }
 
@@ -40,7 +92,7 @@ class _BodyState extends State<Body> {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
-        firstDate: DateTime(2021, 12),
+        firstDate: selectedDate,
         lastDate: DateTime(2101));
     if (picked != null && picked != selectedDate) {
       setState(() {
@@ -57,7 +109,7 @@ class _BodyState extends State<Body> {
           const SizedBox(height: 30),
           Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
               child: Column(
                 children: [
                   Padding(
@@ -97,52 +149,67 @@ class _BodyState extends State<Body> {
                           color: kGotripSurfaceWhite,
                           borderRadius: BorderRadius.all(Radius.circular(36))),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.75,
-                            child: Column(
-                              children: [
+                          Column(
+                            // width: MediaQuery.of(context).size.width * 0.75,
+                            children: [
+                              Row(children: [
                                 TripPlaceSelect(
                                   hintText: 'Ville de départ',
                                   place: fromPlace,
-                                  items: cities,
+                                  items: fromCities,
                                   onChange: (String? newValue) {
                                     setState(() {
                                       fromPlace = newValue!;
                                     });
+                                    _setUpdateCities(newValue!, 'from');
                                   },
-                                ),
-                                const SizedBox(height: 10.0),
-                                TripPlaceSelect(
-                                  hintText: 'Ville d\'arrivée',
-                                  place: toPlace,
-                                  items: cities,
-                                  isStart: false,
-                                  onChange: (String? newValue) {
-                                    setState(() {
-                                      toPlace = newValue!;
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
+                                )
+                              ]),
+                              const SizedBox(height: 10.0),
+                              Row(
+                                children: [
+                                  TripPlaceSelect(
+                                    hintText: 'Ville d\'arrivée',
+                                    place: toPlace,
+                                    items: toCities,
+                                    isStart: false,
+                                    onChange: (String? newValue) {
+                                      setState(() {
+                                        toPlace = newValue!;
+                                      });
+                                      _setUpdateCities(newValue!, 'to');
+                                    },
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                            width: 40.0,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                backgroundColor: kGotripLightOrange50,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15)),
-                              ),
-                              onPressed: () {},
-                              child: const Icon(
-                                Icons.swap_vert,
-                                color: Colors.grey,
+                          Column(children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: SizedBox(
+                                height: 50.0,
+                                width: 50.0,
+                                child: TextButton(
+                                  style: TextButton.styleFrom(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 0.0, vertical: 15.0),
+                                    backgroundColor: kGotripLightOrange50,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                  ),
+                                  onPressed: () => _swapCities(),
+                                  child: const Icon(
+                                    Icons.swap_vert,
+                                    color: Colors.grey,
+                                  ),
+                                ),
                               ),
                             ),
-                          )
+                          ])
                         ],
                       )),
                 ],
@@ -168,30 +235,31 @@ class _BodyState extends State<Body> {
                         // This next line does the trick.
                         scrollDirection: Axis.horizontal,
                         children: <Widget>[
-                          for (int i = 6; i < 10; i++)
-                            i == 7
-                                ? Container(
-                                    margin: const EdgeInsets.only(right: 10.0),
-                                    child: DefaultButton(
-                                      press: () {},
-                                      text: '0$i : 00',
-                                      width: 90,
-                                      backgroundColor: kGotripOrange,
-                                      textColor: kGotripBackgroundWhite,
-                                      // isOutlined: true,
-                                    ),
-                                  )
-                                : Container(
-                                    margin: const EdgeInsets.only(right: 10.0),
-                                    child: DefaultButton(
-                                      press: () {},
-                                      text: '0$i : 00',
-                                      width: 90,
-                                      backgroundColor: kGotripBackgroundWhite,
-                                      textColor: kGotripOrange,
-                                      isOutlined: true,
-                                    ),
-                                  ),
+                          for (int i = 0; i < hourList.length; i++)
+                            Container(
+                              margin: const EdgeInsets.only(right: 10.0),
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15.0, vertical: 5.0),
+                                  backgroundColor: hourList[i].isActive
+                                      ? kGotripOrange
+                                      : kGotripLightOrange50,
+                                  primary: hourList[i].isActive
+                                      ? kGotripBackgroundWhite
+                                      : kGotripOrange,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15)),
+                                ),
+                                onPressed: () => _setToggleHour(hourList[i]),
+                                child: Text(
+                                  hourList[i].value,
+                                  style: const TextStyle(
+                                      fontSize: 17.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            )
                         ],
                       ),
                     ),
