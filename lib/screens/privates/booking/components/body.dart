@@ -1,7 +1,8 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:gotripmobile/colors.dart';
 import 'package:gotripmobile/components/default_button.dart';
-import 'package:gotripmobile/screens/privates/home/component/place_select.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);

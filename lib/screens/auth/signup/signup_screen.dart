@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gotripmobile/colors.dart';
-import 'package:gotripmobile/components/custom_header_auth.dart';
 import 'package:gotripmobile/screens/auth/signin/signin_screen.dart';
 import 'package:gotripmobile/screens/auth/signup/components/body.dart';
 

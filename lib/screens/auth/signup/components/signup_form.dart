@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:gotripmobile/colors.dart';
 import 'package:gotripmobile/components/custom_surfix.dart';
@@ -24,10 +26,10 @@ class _SignupFormState extends State<SignupForm> {
   void initState() {
     super.initState();
     setState(() {
-      password:
-      '';
-      confirmPassword:
-      '';
+      // password:
+      // '';
+      // confirmPassword:
+      // '';
     });
   }
 
