@@ -106,7 +106,7 @@ class _BodyState extends State<Body> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 30),
+          // const SizedBox(height: 30),
           Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
@@ -254,9 +254,12 @@ class _BodyState extends State<Body> {
                                 onPressed: () => _setToggleHour(hourList[i]),
                                 child: Text(
                                   hourList[i].value,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       fontSize: 17.0,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.bold,
+                                      color: hourList[i].isActive
+                                          ? kGotripBackgroundWhite
+                                          : kGotripDark900),
                                 ),
                               ),
                             )

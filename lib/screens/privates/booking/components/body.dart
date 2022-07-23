@@ -1,8 +1,7 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:gotripmobile/colors.dart';
 import 'package:gotripmobile/components/default_button.dart';
+import 'package:gotripmobile/models/trip_type.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -13,6 +12,28 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   List<String> passengerList = ['1', '2', '3', '4', '5'];
   String passengers = '1';
+  List<TripType> tripTypeList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    var newList = TripType.getTripTypeServices();
+    var index = newList.indexWhere((element) => element.id == 1);
+    newList[index].isActive = true;
+    setState(() {
+      tripTypeList = newList;
+    });
+  }
+
+  void _setToggleTripType(TripType selected) {
+    var newList = TripType.getTripTypeServices();
+    var index = newList.indexWhere((element) => element.id == selected.id);
+    newList[index].isActive = true;
+
+    setState(() {
+      tripTypeList = newList;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +52,7 @@ class _BodyState extends State<Body> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 50.0,
+              height: 30.0,
             ),
             Row(
               children: const [
@@ -56,38 +77,83 @@ class _BodyState extends State<Body> {
             const SizedBox(
               height: 40.0,
             ),
+            Center(
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    for (int i = 0; i < tripTypeList.length; i++)
+                      DefaultButton(
+                        press: () => _setToggleTripType(tripTypeList[i]),
+                        text: tripTypeList[i].name,
+                        width: 150,
+                        height: 50.0,
+                        backgroundColor: tripTypeList[i].isActive
+                            ? kGotripLightOrange50
+                            : kGotripBackgroundWhite,
+                        textColor: tripTypeList[i].isActive
+                            ? kGotripDark900
+                            : kGotripOrange400,
+                      ),
+                  ]),
+            ),
+            const Spacer(
+              flex: 1,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Date',
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-                    const SizedBox(
-                      height: 5.0,
-                    ),
-                    const Text(
-                      '26.05.2021',
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'YDE',
                       style: TextStyle(
-                          fontSize: 16.0, fontWeight: FontWeight.bold),
+                          fontSize: 40.0, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Yaoundé',
+                      style: TextStyle(fontSize: 16.0),
                     ),
                   ],
                 ),
                 Column(
-                  children: [
-                    const Text(
-                      'Heure',
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'DLA',
+                      style: TextStyle(
+                          fontSize: 40.0, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Douala',
                       style: TextStyle(fontSize: 16.0),
                     ),
-                    const SizedBox(
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Date et heure',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    SizedBox(
                       height: 5.0,
                     ),
-                    const Text(
-                      '10:00',
+                    Text(
+                      '26.05.2021 (14h30)',
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
@@ -95,16 +161,16 @@ class _BodyState extends State<Body> {
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    const Text(
-                      'Type de voyage',
+                  children: const [
+                    Text(
+                      'Catégorie',
                       style: TextStyle(fontSize: 16.0),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 5.0,
                     ),
-                    const Text(
-                      'Aller simple',
+                    Text(
+                      'Classique',
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
@@ -113,73 +179,64 @@ class _BodyState extends State<Body> {
               ],
             ),
             const SizedBox(
-              height: 30.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  'Ville de départ',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-                Text(
-                  'Douala',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  'Ville d\'arrivée',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-                Text(
-                  'Yaoundé',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            const SizedBox(
               height: 20.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Passager(s)',
-                  style: TextStyle(fontSize: 16.0),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Prix',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Text(
+                      '3500 FCFA',
+                      style: TextStyle(
+                          fontSize: 24.0, fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                    width: 100.0,
-                    child: DropdownButton(
-                      hint: const Text('Nombre de passager(s)'),
-                      dropdownColor: kGotripBackgroundWhite,
-                      focusColor: kGotripOrange,
-                      isExpanded: true,
-                      items: passengerList
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          passengers = newValue!;
-                        });
-                      },
-                      value: passengers,
-                      icon: const Visibility(
-                          visible: true, child: Icon(Icons.arrow_drop_down)),
-                      elevation: 4,
-                      style:
-                          const TextStyle(color: kGotripDark900, fontSize: 15),
-                    )),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text(
+                      'Passager(s)',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    SizedBox(
+                        width: 100.0,
+                        child: DropdownButton(
+                            hint: const Text('Nombre de passager(s)'),
+                            dropdownColor: kGotripBackgroundWhite,
+                            focusColor: kGotripOrange,
+                            isExpanded: true,
+                            items: passengerList
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                passengers = newValue!;
+                              });
+                            },
+                            value: passengers,
+                            icon: const Visibility(
+                                visible: true,
+                                child: Icon(Icons.arrow_drop_down)),
+                            elevation: 4,
+                            style: const TextStyle(
+                                color: kGotripDark900, fontSize: 15))),
+                  ],
+                )
               ],
             ),
             const SizedBox(
@@ -205,32 +262,6 @@ class _BodyState extends State<Body> {
                   ),
                 ),
               ],
-            ),
-            const Spacer(
-              flex: 2,
-            ),
-            Center(
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    DefaultButton(
-                      press: () {},
-                      text: 'Aller simple',
-                      width: 150,
-                      height: 50.0,
-                      backgroundColor: kGotripLightOrange50,
-                      textColor: kGotripDark900,
-                    ),
-                    DefaultButton(
-                      press: () {},
-                      text: 'Aller - Retour',
-                      width: 150,
-                      height: 50.0,
-                      backgroundColor: kGotripBackgroundWhite,
-                      textColor: kGotripOrange400,
-                      // isOutlined: true,
-                    ),
-                  ]),
             ),
             const Spacer(
               flex: 2,
