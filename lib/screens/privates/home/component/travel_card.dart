@@ -66,6 +66,7 @@ class TravelCard extends StatelessWidget {
                       tripDate,
                       style: const TextStyle(fontSize: 15.0),
                     ),
+                    const SizedBox(height: 2.0),
                     Text(
                       'Heure : $tripHour',
                       style:
@@ -83,10 +84,25 @@ class TravelCard extends StatelessWidget {
                     Text(
                       placeNumber.toString(),
                       style: const TextStyle(
-                          fontSize: 28, fontWeight: FontWeight.bold),
+                          fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
+
+                // Column(
+                //   crossAxisAlignment: CrossAxisAlignment.end,
+                //   children: [
+                //     Text(
+                //       'Places disponibles'.toUpperCase(),
+                //       style: const TextStyle(fontWeight: FontWeight.bold),
+                //     ),
+                //     Text(
+                //       placeNumber.toString(),
+                //       style: const TextStyle(
+                //           fontSize: 28, fontWeight: FontWeight.bold),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
             const SizedBox(
@@ -113,9 +129,6 @@ class TravelCard extends StatelessWidget {
                         )
                       ],
                     ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
                     Row(
                       children: [
                         const Icon(
@@ -133,17 +146,46 @@ class TravelCard extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
-                  width: 180,
-                  child: DefaultButton(
-                    press: onPressed,
-                    text: '$price $currency',
-                    height: 50.0,
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Prix'.toUpperCase(),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    Text(
+                      '$price $currency',
+                      style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: kGotripOrange400),
+                    ),
+                  ],
                 ),
+                // SizedBox(
+                //   width: 180,
+                //   child: DefaultButton(
+                //     press: onPressed,
+                //     text: '$price $currency',
+                //     height: 50.0,
+                //   ),
+                // ),
               ],
             ),
             const SizedBox(height: 10.0),
+            SizedBox(
+              child: DefaultButton(
+                press: onPressed,
+                text: 'Réserver',
+                // width: 150,
+                height: 50.0,
+                backgroundColor: kGotripLightOrange50,
+                textColor: kGotripDark900,
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

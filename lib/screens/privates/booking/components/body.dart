@@ -35,11 +35,10 @@ class _BodyState extends State<Body> {
             ),
             Row(
               children: const [
-                Text(
-                  'Réservez le ticket de votre ',
-                  style: TextStyle(fontSize: 24.0),
-                  textAlign: TextAlign.start,
-                ),
+                Text('Réservez le ticket de votre ',
+                    style:
+                        TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.start),
               ],
             ),
             const SizedBox(
@@ -49,10 +48,7 @@ class _BodyState extends State<Body> {
               children: const [
                 Text(
                   'prochain(s) voyage',
-                  style: TextStyle(
-                      color: kGotripOrange400,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold),
+                  style: TextStyle(color: kGotripOrange400, fontSize: 24.0),
                   textAlign: TextAlign.start,
                 ),
               ],
@@ -65,6 +61,7 @@ class _BodyState extends State<Body> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
                       'Date',
@@ -97,6 +94,7 @@ class _BodyState extends State<Body> {
                   ],
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     const Text(
                       'Type de voyage',
