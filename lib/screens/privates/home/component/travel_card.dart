@@ -165,14 +165,6 @@ class TravelCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                // SizedBox(
-                //   width: 180,
-                //   child: DefaultButton(
-                //     press: onPressed,
-                //     text: '$price $currency',
-                //     height: 50.0,
-                //   ),
-                // ),
               ],
             ),
             const SizedBox(height: 10.0),
@@ -182,8 +174,8 @@ class TravelCard extends StatelessWidget {
                 text: 'Réserver',
                 // width: 150,
                 height: 50.0,
-                backgroundColor: kGotripLightOrange50,
-                textColor: kGotripDark900,
+                backgroundColor: kGotripOrange,
+                textColor: kGotripBackgroundWhite,
               ),
             ),
             Row(

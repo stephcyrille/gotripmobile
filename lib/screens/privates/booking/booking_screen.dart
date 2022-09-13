@@ -13,6 +13,11 @@ class BookingScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             elevation: 0,
+            backgroundColor: kGotripOrange400,
+            title: const Text(
+              'Réservation',
+              style: TextStyle(color: kGotripBackgroundWhite),
+            ),
             leading: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: IconButton(

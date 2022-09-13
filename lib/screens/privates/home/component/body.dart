@@ -106,7 +106,6 @@ class _BodyState extends State<Body> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // const SizedBox(height: 30),
           Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
